@@ -10,14 +10,15 @@ import {
 export const runtime = 'nodejs';
 
 export async function POST(req: NextRequest) {
-  const unauth = authorize(req);
-  if (unauth) return unauth;
+  //const unauth = authorize(req);
+  //if (unauth) return unauth;
 
   let body: any;
   try { body = await req.json(); }
   catch { return wrapConteudo('Invalid JSON', 400); }
 
-  const { target, params } = body;
+  const target = body.context.user.target;
+  const params = body.target.user.params;
 
   if (target === 'sheet') {
     try {

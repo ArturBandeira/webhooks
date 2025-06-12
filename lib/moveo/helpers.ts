@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 
 export function wrapConteudo(conteudo: any, status = 200): NextResponse {
   return NextResponse.json(
-    { output: { live_instructions: { conteudo } } },
+    { output: conteudo },
     { status }
   );
 }
