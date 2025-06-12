@@ -19,7 +19,7 @@ export async function listUserEvents(
 
 export interface CreateEventParams {
   calendarId: string;
-  event: calendar_v3.Schema$Event;
+  payload: calendar_v3.Schema$Event;
 }
 
 export async function createEvent(params: CreateEventParams) {
@@ -28,7 +28,7 @@ export async function createEvent(params: CreateEventParams) {
   const res = await cal.events.insert({
     auth,
     calendarId: params.calendarId,
-    requestBody: params.event,
+    requestBody: params.payload,
   });
   return res.data;
 }

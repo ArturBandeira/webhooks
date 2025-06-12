@@ -56,12 +56,22 @@ export async function POST(req: NextRequest) {
 
     const conteudo = `1. Eventos de ${email} nos próximos 30 dias (de ${datePart(timeMin)} a ${datePart(timeMax)}):\n${eventLines}`
 
-    return NextResponse.json({
+   /* return NextResponse.json({
       output: {
         events,
         live_instructions: { conteudo }
       }
+    })*/
+
+    ////
+    return NextResponse.json({
+      output: {
+        events,
+        live_instructions: { events }
+      }
     })
+    ////
+    
   } catch (err) {
     console.error(err)
     return wrapConteudo('Internal server error while fetching next-30-days events.', 500)
